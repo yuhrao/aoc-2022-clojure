@@ -43,14 +43,13 @@
        (filter #(not-empty %))
        count))
 
-(defn execute [input-path part]
-  (let [input (slurp input-path)]
-    (condp = part
-      :first (count-fully-contained-overlaps input)
-      :second (count-overlaps input))))
+(def execute
+  (utils/execute-fn {:first  {:input-path "resources/inputs/day4.txt"
+                              :fn         count-fully-contained-overlaps}
+                     :second {:input-path "resources/inputs/day4.txt"
+                              :fn         count-overlaps}}))
 
 (comment
-  (execute "resources/inputs/day4.txt" :first)
-  (execute "resources/inputs/day4.txt" :second)
-
+  (execute :first)
+  (execute :second)
   )

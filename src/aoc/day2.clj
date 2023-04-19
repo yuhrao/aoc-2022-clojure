@@ -86,14 +86,14 @@
                 (+ score result-points choice-points)))
             0 matches)))
 
-(defn execute [input-path part]
-  (let [input (slurp input-path)]
-    (condp = part
-      :first (calculate-theoretical-score input)
-      :second (calculate-real-score input))))
+(def execute
+  (utils/execute-fn {:first  {:input-path "resources/inputs/day2.txt"
+                              :fn         calculate-theoretical-score}
+                     :second {:input-path "resources/inputs/day2.txt"
+                              :fn         calculate-real-score}}))
 
 (comment
-  (execute "resources/inputs/day2.txt" :first)
-  (execute "resources/inputs/day2.txt" :second)
+  (execute :first)
+  (execute :second)
 
   )

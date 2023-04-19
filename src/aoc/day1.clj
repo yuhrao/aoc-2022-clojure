@@ -1,5 +1,6 @@
 (ns aoc.day1
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string]
+            [utils]))
 
 (defn biggest-callories [input]
   (->> (string/split input #"\n\n")
@@ -21,14 +22,14 @@
        (apply +)))
 
 ;; https://adventofcode.com/2022/day/1/input
-(defn execute [input-path part]
-  (let [input (slurp input-path)]
-    (condp = part
-      :first (biggest-callories input)
-      :second (total-calories-top-3 input))))
+(def execute
+  (utils/execute-fn {:first  {:input-path "resources/inputs/day1.txt"
+                              :fn         biggest-callories}
+                     :second {:input-path "resources/inputs/day1.txt"
+                              :fn         total-calories-top-3}}))
 
 (comment
-  (execute "resources/inputs/day1.txt" :first)
-  (execute "resources/inputs/day1.txt" :second)
+  (execute :first)
+  (execute :second)
 
   )

@@ -36,15 +36,16 @@
        (map priority-map)
        (apply +)))
 
-(defn execute [input-path part]
-  (let [input (slurp input-path)]
-    (condp = part
-      :first (summarize-duplicated-items-priority input)
-      :second (summarize-group-badges-priority input))))
+(def execute
+  (utils/execute-fn {:first  {:input-path "resources/inputs/day3.txt"
+                              :fn         summarize-duplicated-items-priority}
+                     :second {:input-path "resources/inputs/day3.txt"
+                              :fn         summarize-group-badges-priority}}))
+
 
 (comment
 
-  (execute "resources/inputs/day3.txt" :first)
-  (execute "resources/inputs/day3.txt" :second)
+  (execute :first)
+  (execute :second)
 
   )
