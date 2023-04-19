@@ -1,4 +1,4 @@
-(ns aoc.day-4-test
+(ns aoc.day4-test
   (:require [clojure.test :as t]
             [aoc.day4 :as d4]))
 
